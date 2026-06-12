@@ -1,0 +1,12 @@
+[user]
+	name = Manuel Andrade
+	email = manuel.d.andrade@tecnico.ulisboa.pt
+[core]
+    editor = nvim
+    autocrlf = false        # you're on Linux, keep it off
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true           # avoids ugly merge commits on pull
