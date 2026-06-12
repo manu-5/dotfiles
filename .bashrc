@@ -121,6 +121,13 @@ source "$OSH"/oh-my-bash.sh
 
 
 alias la='ls -la'
+
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTCONTROL=ignoreboth
+
+shopt -s autocd
+
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -149,3 +156,5 @@ alias la='ls -la'
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 export PATH="$HOME/.local/bin:$PATH"
+
+eval "$(oh-my-posh init bash --config ~/.oh-my-bash/custom/themes/spaceship/spaceship.omp.json)"
