@@ -11,6 +11,7 @@ return {
     dependencies = {
       "mason-org/mason.nvim",
       "neovim/nvim-lspconfig",
+      "hrsh7th/cmp-nvim-lsp",
     },
 
     opts = {
@@ -40,7 +41,7 @@ return {
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
       -- 🧩 Optional: default config for all servers
       vim.lsp.config("*", {
-        capabilities = vim.lsp.protocol.make_client_capabilities(),
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
 
       -- 🦙 Lua (for Neovim config development)
