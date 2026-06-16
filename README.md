@@ -13,5 +13,5 @@ I'm using `yay` as a package manager.
 | Waybar           | Taskbar            |
 | Neovim           | Text editor        |
 | kitty            | Terminal           |
-| flameshot        | Screenshots        |
+| hyprshot         | Screenshots        |
 ##|                  |                    |
