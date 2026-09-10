@@ -99,6 +99,17 @@ window#waybar {
   box-shadow: none;
 }
 
+#custom-wireguard {
+    padding: 0 10px;
+    border-radius: 15px;
+    color: #565f89;
+}
+#custom-wireguard.connected {
+    color: #9ece6a;
+}
+#custom-wireguard:hover {
+    background: rgba(26, 27, 38, 0.9);
+}
 #custom-arch {
     margin-left: 5px;
     padding: 0 10px;

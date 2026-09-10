@@ -39,6 +39,7 @@ return {
       vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Find References" })
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename Symbol" })
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+      vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
       -- 🧩 Optional: default config for all servers
       vim.lsp.config("*", {
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
