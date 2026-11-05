@@ -13,6 +13,8 @@ return {
             LineNrAbove = { fg = colors.surface1 },
             LineNrBelow = { fg = colors.surface1 },
             CursorLineNr = { fg = "#e0cc8a", bold = true }, -- dirty tooth yellow
+            -- stronger than the default (default mixes surface0 with the background)
+            CursorLine = { bg = colors.surface1 },
           }
         end,
       })
