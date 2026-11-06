@@ -27,5 +27,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- switch to previous file (same as <C-^>, which is hard to type on a PT keyboard)
+vim.keymap.set("n", "<leader><leader>", "<C-^>", { desc = "Switch to previous file" })
+
+-- PT keyboard: ç acts as [ and º acts as ] (so çh / ºh = prev / next git change, etc.)
+-- remap = true so they trigger whatever [ / ] maps exist (gitsigns, todo, diagnostics)
+vim.keymap.set({ "n", "x", "o" }, "ç", "[", { remap = true, desc = "[ (PT keyboard)" })
+vim.keymap.set({ "n", "x", "o" }, "º", "]", { remap = true, desc = "] (PT keyboard)" })
 
 require("config.lazy")
+require("config.cheatsheet")
