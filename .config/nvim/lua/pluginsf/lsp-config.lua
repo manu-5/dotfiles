@@ -77,7 +77,34 @@ return {
 
       -- ☕ Java
       vim.lsp.config("jdtls", {
+        -- jdtls itself must RUN on Java 21: the system default (Java 27) is
+        -- too new for it and makes it crash. Your code can still target 27.
+        cmd_env = { JAVA_HOME = "/usr/lib/jvm/java-21-openjdk" },
         -- For advanced setups, you'd use nvim-jdtls instead
+      })
+
+      -- 🔔 Warn when Mason updates jdtls: a newer version may run on Java 27,
+      -- so the JAVA_HOME pin above might not be needed anymore.
+      local JDTLS_PINNED_FOR = "v1.58.0" -- jdtls version the pin was set for
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "java",
+        once = true,
+        callback = function()
+          local receipt = vim.fn.stdpath("data") .. "/mason/packages/jdtls/mason-receipt.json"
+          local ok, data = pcall(function()
+            return vim.json.decode(table.concat(vim.fn.readfile(receipt), "\n"))
+          end)
+          if not ok or not data.source then return end
+          local version = data.source.id:match("@(.+)$")
+          if version and version ~= JDTLS_PINNED_FOR then
+            vim.notify(
+              ("jdtls updated: %s -> %s.\nAsk Claude to check if the Java 21 pin in lsp-config.lua is still needed.")
+                :format(JDTLS_PINNED_FOR, version),
+              vim.log.levels.WARN,
+              { title = "jdtls" }
+            )
+          end
+        end,
       })
     end,
   },
