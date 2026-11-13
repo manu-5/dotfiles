@@ -122,6 +122,10 @@ source "$OSH"/oh-my-bash.sh
 
 alias la='ls -la'
 
+# Sunshine screen streaming (laptop -> desktop via Moonlight)
+alias sunon='systemctl --user start app-dev.lizardbyte.app.Sunshine.service'
+alias sunoff='systemctl --user stop app-dev.lizardbyte.app.Sunshine.service'
+
 HISTSIZE=10000
 HISTFILESIZE=20000
 HISTCONTROL=ignoreboth
@@ -156,5 +160,8 @@ shopt -s autocd
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 export PATH="$HOME/.local/bin:$PATH"
+
+# homelab K3s cluster access (manuhp) - default kubeconfig has stale creds
+export KUBECONFIG="$HOME/.kube/manuhp-config"
 
 eval "$(oh-my-posh init bash --config ~/.oh-my-bash/custom/themes/spaceship/spaceship.omp.json)"
